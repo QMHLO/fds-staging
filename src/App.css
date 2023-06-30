@@ -179,7 +179,8 @@ body {
   overflow-y: hidden !important;
   border-bottom: 1px solid #000 !important;
 }
-.customer .ce-message-list::-webkit-scrollbar {
+.customer .ce-message-list::-webkit-scrollbar,
+.owner .ce-message-list::-webkit-scrollbar {
   display: none !important;
 }
 .customer .ce-message-list-content {
@@ -188,13 +189,21 @@ body {
 .customer .ce-chat-feed {
   border: 1px solid #000;
 }
-.customer .ce-message-form {
+.customer .ce-message-form,
+.owner .ce-message-form {
   border-top: 1px solid #000;
 }
 .owner .ce-their-reads-row .ce-avatar-dot:nth-child(2) {
   display: none !important;
 }
 .customer .ce-my-reads-row .ce-avatar-dot:nth-child(2) {
+  display: none !important;
+}
+.owner .ce-chat-feed-column {
+  border-bottom: 1px solid #000 !important;
+}
+.owner .ce-chat-header-subtitle,
+.owner .ce-message-date-text {
   display: none !important;
 }
 @media screen and (max-width: 768px) {
