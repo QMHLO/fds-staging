@@ -191,7 +191,7 @@ body {
 .customer .ce-message-form {
   border-top: 1px solid #000;
 }
-.owner .ce-my-reads-row .ce-avatar-dot:nth-child(1) {
+.owner .ce-their-reads-row .ce-avatar-dot:nth-child(2) {
   display: none !important;
 }
 .customer .ce-my-reads-row .ce-avatar-dot:nth-child(2) {
