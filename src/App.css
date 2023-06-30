@@ -162,6 +162,47 @@ body {
 }
 
 /* Chat */
+.customer {
+  padding-bottom: 50px;
+}
+.customer .ce-chat-list-column,
+.customer .ce-chat-settings-column,
+.customer .ce-chat-header-subtitle,
+.customer .ce-message-date-text {
+  display: none !important;
+}
+.customer .ce-chat-engine {
+  justify-content: center !important;
+}
+.customer .ce-chat-feed-column {
+  overflow: hidden !important;
+  overflow-y: hidden !important;
+  border-bottom: 1px solid #000 !important;
+}
+.customer .ce-message-list::-webkit-scrollbar {
+  display: none !important;
+}
+.customer .ce-message-list-content {
+  padding-right: 10px !important;
+}
+.customer .ce-chat-feed {
+  border: 1px solid #000;
+}
+.customer .ce-message-form {
+  border-top: 1px solid #000;
+}
+.owner .ce-my-reads-row .ce-avatar-dot:nth-child(1) {
+  display: none !important;
+}
+.customer .ce-my-reads-row .ce-avatar-dot:nth-child(2) {
+  display: none !important;
+}
+@media screen and (max-width: 768px) {
+  .customer .ce-default-button.ce-mobile-chat-list-button,
+  .customer .ce-default-button.ce-mobile-chat-settings-button {
+    display: none !important;
+  }
+}
 /* .customer .ce-chat-list,
 .customer .ce-chat-list-column,
 .customer .ce-settings-column {
