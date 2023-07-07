@@ -1,13 +1,13 @@
 import React from "react";
-import SingIn from "./compoments/SingIn";
+import SingIn from "./compoments/Form/SingIn";
 import Header from "./compoments/Header";
-import SignUp from "./compoments/SignUp";
+import SignUp from "./compoments/Form/SignUp";
 import { AuthContext } from "./Context/AuthContext";
 import { Routes, Route, Navigate } from "react-router";
 import HomePage from "./compoments/HomePage";
 import DetailPage from "./compoments/DetailPage";
-import ReactChat from "./compoments/ReactChat";
-import OwnerChat from "./compoments/OwnerChat";
+import ReactChat from "./compoments/Chat/ReactChat";
+import OwnerChat from "./compoments/Chat/OwnerChat";
 import "./App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

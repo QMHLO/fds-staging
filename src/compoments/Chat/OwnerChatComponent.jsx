@@ -1,5 +1,6 @@
 import React from "react";
 import { useMultiChatLogic, MultiChatSocket, MultiChatWindow } from "react-chat-engine-advanced";
+import { useEffect } from "react";
 
 function OwnerChatComponent() {
   const projectId = process.env.REACT_APP_CE_PROJECT_ID;

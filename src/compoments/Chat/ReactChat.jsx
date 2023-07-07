@@ -2,12 +2,14 @@ import React from "react";
 import { useState, useContext } from "react";
 import axios from "axios";
 
-import { AuthContext } from "../Context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
 import { ChatEngine } from "react-chat-engine";
-import Loading from "./Loading";
+import Loading from "../Loading";
 import { NewMessageForm } from "react-chat-engine";
 import { useMultiChatLogic, MultiChatSocket, MultiChatWindow } from "react-chat-engine-advanced";
 import ChatComponent from "./ChatComponent";
+import "./Chat.css";
+import MessageIcon from "../../assets/img/msg_icon.png";
 function ReactChat() {
   let { currentUser } = React.useContext(AuthContext);
   const [dataId, setDataId] = React.useState(null);
@@ -40,7 +42,7 @@ function ReactChat() {
       .put(
         "https://api.chatengine.io/chats/",
         {
-          usernames: ["chat owner", currentUser?.email || localStorage.getItem("email")],
+          usernames: ["seller", currentUser?.email || localStorage.getItem("email")],
           is_direct_chat: true,
         },
         { headers: { "PRIVATE-KEY": process.env.REACT_APP_PRIVATE_KEY } }
@@ -71,14 +73,15 @@ function ReactChat() {
 
   return (
     <div className="customer">
+      <div className="chat-header">
+        <div className="row">
+          <div className="msg-icon">
+            <img src={MessageIcon} alt="" />
+          </div>
+          <p className="txt">ちょくれん</p>
+        </div>
+      </div>
       <ChatComponent user={user} />
-      {/* <MultiChatWindow projectId={process.env.REACT_APP_CE_PROJECT_ID} username={user.email} secret={user.email} style={{ height: "100vh" }} />
-      <MultiChatSocket projectId={process.env.REACT_APP_CE_PROJECT_ID} username={user.email} secret={user.email} /> */}
-
-      {/* <MultiChatWindow {...chatProps} style={{ height: "100vh" }} />
-      <MultiChatSocket {...chatProps} /> */}
-
-      {/* <ChatEngine projectID={process.env.REACT_APP_CE_PROJECT_ID} userName={user.email} userSecret={user.email} renderNewChatForm={() => <div></div>} renderNewMessageForm={() => <NewMessageForm />} /> */}
     </div>
   );
 }

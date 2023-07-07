@@ -18,7 +18,8 @@ export default function HomePage() {
       setLoading(!loading);
       try {
         //http://localhost:1337/api/products?populate=*pagination[start]=0&pagination[limit]=2&sort[0]=id%3Adesc sort and pagination
-        const res = await fetch(`${process.env.REACT_APP_API_ENDPOINT}/products?populate=*&pagination[start]=${startItem}&pagination[limit]=${itemLimitCount}&sort[0]=id%3Adesc`);
+        // const res = await fetch(`${process.env.REACT_APP_PRODUCTION_API}/api/products?populate=*&pagination[start]=${startItem}&pagination[limit]=${itemLimitCount}&sort[0]=id%3Adesc`);
+        const res = await fetch(`https://fds-backend.onrender.com/api/products?populate=*&pagination[start]=${startItem}&pagination[limit]=${itemLimitCount}&sort[0]=id%3Adesc`);
         const data = await res.json();
         setTotal(data?.meta?.pagination?.total);
         setData(data);
@@ -59,14 +60,15 @@ export default function HomePage() {
   // if (data) return <div>Data have received</div>;
   return (
     <>
-      <div className="row">
+      <div className="top-row">
         {data &&
           data.data.map(({ id, attributes: { title, description, image } }) => {
             return (
               <>
                 <Link to={`/detail/${id}`}>
                   <div className="card" key={id}>
-                    <img src={`http://localhost:1337${image?.data?.attributes?.url}`} alt="some image" />
+                    {/* <img src={`http://localhost:1337${image?.data?.attributes?.url}`} alt="some image" /> */}
+                    <img src={`https://fds-backend.onrender.com${image?.data?.attributes?.url}`} alt="some image" />
                     <div className="container">
                       <h4>
                         <b>{title}</b>

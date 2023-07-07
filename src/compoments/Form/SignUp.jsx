@@ -1,9 +1,10 @@
 import { useState, useContext } from "react";
 import axios from "axios";
-import { AuthContext } from "../Context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
+import Loading from "../Loading";
 
 function SignUp() {
   const [SignUpData, setSignUp] = useState({
@@ -14,9 +15,12 @@ function SignUp() {
 
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
+    setLoading(!loading);
+
     // stapi authReady
     // retur true
 
@@ -25,7 +29,7 @@ function SignUp() {
     const { name, email, password } = SignUpData;
 
     axios
-      .post("http://localhost:1337/api/auth/local/register", {
+      .post("https://fds-backend.onrender.com/api/auth/local/register", {
         username: name,
         email,
         password,
@@ -42,6 +46,7 @@ function SignUp() {
         });
         localStorage.setItem("jwt-token", response.data.jwt);
         toast.success("User Registration Success");
+        setLoading(!loading);
         navigate("/chat");
       })
       .catch((error) => {
@@ -60,6 +65,9 @@ function SignUp() {
     });
   };
 
+  <div>
+    <Loading />
+  </div>;
   return (
     <div className="singin">
       <h1>Sign Up form</h1>
