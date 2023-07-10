@@ -17,18 +17,23 @@ function ReactChat() {
   const [loading, setLoading] = React.useState(false);
 
   console.log(currentUser);
+  console.log(localStorage.getItem("name"));
 
   // const projectId = process.env.REACT_APP_CE_PROJECT_ID;
   // const username = user.email;
   // const secret = user.email;
   // const chatProps = useMultiChatLogic(projectId, username, secret);
+  // const currentUserName = localStorage.getItem("name");
+  const username = localStorage.getItem("email")?.split("@")[0];
 
   function getorCreateUser(callback) {
     axios
       .put(
         "https://api.chatengine.io/users/",
         {
-          username: currentUser?.email || localStorage.getItem("email"),
+          username: username || localStorage.getItem("email"),
+          // username: currentUserName,
+
           secret: currentUser?.email || localStorage.getItem("email"),
           email: currentUser?.email || localStorage.getItem("email"),
         },
@@ -42,7 +47,7 @@ function ReactChat() {
       .put(
         "https://api.chatengine.io/chats/",
         {
-          usernames: ["seller", currentUser?.email || localStorage.getItem("email")],
+          usernames: ["seller", username || localStorage.getItem("email")],
           is_direct_chat: true,
         },
         { headers: { "PRIVATE-KEY": process.env.REACT_APP_PRIVATE_KEY } }

@@ -13,6 +13,7 @@ function SignIn() {
   const [SignInData, setSignIn] = useState({
     email: "",
     password: "",
+    name: "",
   });
 
   const { dispatch } = useContext(AuthContext);
@@ -24,7 +25,7 @@ function SignIn() {
     setLoading(!loading);
 
     // signin
-    const { email, password } = SignInData;
+    const { email, password, name } = SignInData;
     if ((process.env.REACT_APP_OWNER_MAIL === email && process.env.REACT_APP_OWNER_PASS === password) || (process.env.REACT_APP_ADMIN_MAIL === email && process.env.REACT_APP_ADMIN_PASS === password)) {
       dispatch({
         type: "SET_ADMINUSER",
@@ -37,6 +38,7 @@ function SignIn() {
     }
     axios
       .post("https://fds-backend.onrender.com/api/auth/local", {
+        name,
         identifier: email,
         password,
       })
@@ -51,13 +53,18 @@ function SignIn() {
 
         dispatch({
           type: "SET_USER",
-          payload: SignInData,
+          // payload: SignInData,
+          payload: {
+            ...SignInData,
+            name: response.data.user.username,
+          },
         });
 
         console.log(response.data.user.username);
         // console.log(response);
         localStorage.setItem("jwt-token", response.data.jwt);
         localStorage.setItem("email", email);
+        localStorage.setItem("name", response.data.user.username);
         navigate("/chat");
       })
       .catch((error) => {

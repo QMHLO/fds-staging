@@ -45,6 +45,7 @@ function SignUp() {
           payload: SignUpData,
         });
         localStorage.setItem("jwt-token", response.data.jwt);
+        localStorage.setItem("name", response.data.user.username);
         toast.success("User Registration Success");
         setLoading(!loading);
         navigate("/chat");

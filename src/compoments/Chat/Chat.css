@@ -184,6 +184,10 @@
 .ce-attachment-input {
   display: none !important;
 }
+.ce-their-message-timestamp,
+.ce-my-message-timestamp {
+  display: none !important;
+}
 @media screen and (max-width: 768px) {
   .customer .ce-default-button.ce-mobile-chat-list-button,
   .customer .ce-default-button.ce-mobile-chat-settings-button {
