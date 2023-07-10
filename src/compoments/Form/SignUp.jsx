@@ -69,7 +69,7 @@ function SignUp() {
     <Loading />
   </div>;
   return (
-    <div className="singin">
+    <div className="singup">
       <h1>Sign Up form</h1>
       <form onSubmit={submitHandler}>
         <input name="name" value={SignUpData.name} type="text" placeholder="enter your name" onChange={onChangeHandler} />

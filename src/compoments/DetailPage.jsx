@@ -55,13 +55,15 @@ function DetailPage() {
         <Loading />
       </div>
     );
+  const imageUrl = data?.data?.attributes?.image?.data?.attributes?.url;
+  const cloudinaryUrl = imageUrl.replace("https://fds-backend.onrender.com", "https://res.cloudinary.com");
   return (
     <>
       <div className="detail">
         <h2>Detail Page</h2>
         <h3>{data.data.attributes.title}</h3>
         {/* <img src={`http://localhost:1337${data?.data?.attributes?.image?.data?.attributes?.url}`} alt="some image" /> */}
-        <img src={`https://fds-backend.onrender.com${data?.data?.attributes?.image?.data?.attributes?.url}`} alt="some image" />
+        <img src={cloudinaryUrl} alt="some image" />
         <p>{data.data.attributes.description}</p>
         {!adminUser && !admin ? <button onClick={chatHandler}>Chat with Owner</button> : ""}
         {chat && <ReactChat />}

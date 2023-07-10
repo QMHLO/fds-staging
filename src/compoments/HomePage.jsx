@@ -63,12 +63,14 @@ export default function HomePage() {
       <div className="top-row">
         {data &&
           data.data.map(({ id, attributes: { title, description, image } }) => {
+            const imageUrl = image?.data?.attributes?.url;
+            const cloudinaryUrl = imageUrl.replace("https://fds-backend.onrender.com", "https://res.cloudinary.com");
             return (
               <>
                 <Link to={`/detail/${id}`}>
                   <div className="card" key={id}>
                     {/* <img src={`http://localhost:1337${image?.data?.attributes?.url}`} alt="some image" /> */}
-                    <img src={`https://fds-backend.onrender.com${image?.data?.attributes?.url}`} alt="some image" />
+                    <img src={cloudinaryUrl} alt="some image" />
                     <div className="container">
                       <h4>
                         <b>{title}</b>
