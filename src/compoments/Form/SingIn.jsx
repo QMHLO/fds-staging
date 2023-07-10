@@ -46,7 +46,7 @@ function SignIn() {
         // console.log("User profile", response.data.user);
         // console.log("User token", response.data.jwt);
         // console.log("User Login Successful");
-        toast.success("Welcome Back");
+        toast.success(`Welcome Back ${response.data.user.username}`);
         setLoading(!loading);
 
         dispatch({
@@ -54,7 +54,8 @@ function SignIn() {
           payload: SignInData,
         });
 
-        console.log(response);
+        console.log(response.data.user.username);
+        // console.log(response);
         localStorage.setItem("jwt-token", response.data.jwt);
         localStorage.setItem("email", email);
         navigate("/chat");
@@ -118,7 +119,7 @@ function SignIn() {
           </div>
           <div className="right">
             <div className="img-wrapper">
-              <img src={LoginImage} alt="" />
+              <img src={LoginImage} alt="LoginImage" />
             </div>
           </div>
         </div>
