@@ -37,7 +37,8 @@ function App() {
       {(currentUser || jwt) && (!adminUser || !admin) && (
         <Routes>
           <Route path="/chat" element={<ReactChat />} />
-          <Route path="/adminchat" element={<OwnerChat />} />
+          {/* <Route path="/adminchat" element={<OwnerChat />} /> */}
+          <Route path="/adminchat" element={<Navigate replace to="/chat" />} />
         </Routes>
       )}
       {(adminUser || admin) && (
