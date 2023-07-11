@@ -1,11 +1,13 @@
 import React from "react";
 import { AuthContext } from "../Context/AuthContext";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
+
 function Header() {
   const { currentUser, adminUser, dispatch } = React.useContext(AuthContext);
   const [jwt, setJwt] = React.useState(localStorage.getItem("jwt-token"));
   const [admin, setAdmin] = React.useState(localStorage.getItem("admin"));
+  const navigate = useNavigate();
 
   const logoutHandler = () => {
     dispatch({
@@ -21,6 +23,10 @@ function Header() {
     // localStorage.removeItem("jwt-token");
     // localStorage.removeItem("admin");
     localStorage.clear();
+    navigate("/");
+    setTimeout(() => {
+      window.location.reload();
+    }, 800);
   };
   return (
     <>
