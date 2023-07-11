@@ -4,7 +4,7 @@ import axios from "axios";
 
 import { AuthContext } from "../../Context/AuthContext";
 import { ChatEngine } from "react-chat-engine";
-import Loading from "../Loading";
+import Loading from "../Loading/Loading";
 import { NewMessageForm } from "react-chat-engine";
 import { useMultiChatLogic, MultiChatSocket, MultiChatWindow } from "react-chat-engine-advanced";
 import ChatComponent from "./ChatComponent";

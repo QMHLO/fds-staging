@@ -4,7 +4,7 @@ import { AuthContext } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import Loading from "../Loading";
+import Loading from "../Loading/Loading";
 import "./form.css";
 import TitleIcon from "../../assets/img/msg_icon_black.png";
 import LoginImage from "../../assets/img/login_img.png";
@@ -13,7 +13,6 @@ function SignIn() {
   const [SignInData, setSignIn] = useState({
     email: "",
     password: "",
-    name: "",
   });
 
   const { dispatch } = useContext(AuthContext);
@@ -25,7 +24,7 @@ function SignIn() {
     setLoading(!loading);
 
     // signin
-    const { email, password, name } = SignInData;
+    const { email, password } = SignInData;
     if ((process.env.REACT_APP_OWNER_MAIL === email && process.env.REACT_APP_OWNER_PASS === password) || (process.env.REACT_APP_ADMIN_MAIL === email && process.env.REACT_APP_ADMIN_PASS === password)) {
       dispatch({
         type: "SET_ADMINUSER",
@@ -38,7 +37,6 @@ function SignIn() {
     }
     axios
       .post("https://fds-backend.onrender.com/api/auth/local", {
-        name,
         identifier: email,
         password,
       })
@@ -53,11 +51,7 @@ function SignIn() {
 
         dispatch({
           type: "SET_USER",
-          // payload: SignInData,
-          payload: {
-            ...SignInData,
-            name: response.data.user.username,
-          },
+          payload: SignInData,
         });
 
         console.log(response.data.user.username);
@@ -114,6 +108,7 @@ function SignIn() {
               <button className="login-btn" type="submit">
                 ログイン
               </button>
+              {/* {loading ? <Loading /> : "ログイン"} */}
               <p className="register-txt">
                 ちょくれんを利用するためにはログインが必要です
                 <br />

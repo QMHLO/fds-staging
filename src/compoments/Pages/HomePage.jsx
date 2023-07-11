@@ -1,8 +1,8 @@
 import React from "react";
-import Header from "./Header";
+import Header from "../Header/Header";
 import { Link } from "react-router-dom";
-import { ProductContext } from "../Context/ProductContext";
-import Loading from "./Loading";
+import { ProductContext } from "../../Context/ProductContext";
+import Loading from "../Loading/Loading";
 
 export default function HomePage() {
   const [data, setData] = React.useState(null);

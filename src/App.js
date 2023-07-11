@@ -1,11 +1,11 @@
 import React from "react";
 import SingIn from "./compoments/Form/SingIn";
-import Header from "./compoments/Header";
+import Header from "./compoments/Header/Header";
 import SignUp from "./compoments/Form/SignUp";
 import { AuthContext } from "./Context/AuthContext";
 import { Routes, Route, Navigate } from "react-router";
-import HomePage from "./compoments/HomePage";
-import DetailPage from "./compoments/DetailPage";
+import HomePage from "./compoments/Pages/HomePage";
+import DetailPage from "./compoments/Pages/DetailPage";
 import ReactChat from "./compoments/Chat/ReactChat";
 import OwnerChat from "./compoments/Chat/OwnerChat";
 import "./App.css";

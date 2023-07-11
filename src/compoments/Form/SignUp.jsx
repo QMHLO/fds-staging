@@ -1,13 +1,14 @@
-import { useState, useContext } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
-import Loading from "../Loading";
+import Loading from "../Loading/Loading";
+import TitleIcon from "../../assets/img/msg_icon_black.png";
 
 function SignUp() {
-  const [SignUpData, setSignUp] = useState({
+  const [SignUpData, setSignUpData] = useState({
     name: "",
     email: "",
     password: "",
@@ -16,15 +17,11 @@ function SignUp() {
   const { dispatch } = useContext(AuthContext);
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
+  const [agreeChecked, setAgreeChecked] = useState(false);
 
   const submitHandler = (e) => {
     e.preventDefault();
-    setLoading(!loading);
-
-    // stapi authReady
-    // retur true
-
-    console.table(SignUpData);
+    setLoading(true);
 
     const { name, email, password } = SignUpData;
 
@@ -35,7 +32,6 @@ function SignUp() {
         password,
       })
       .then((response) => {
-        // Handle success.
         console.log("Well done!");
         console.log("User profile", response.data.user);
         console.log("User token", response.data.jwt);
@@ -47,40 +43,78 @@ function SignUp() {
         localStorage.setItem("jwt-token", response.data.jwt);
         localStorage.setItem("name", response.data.user.username);
         toast.success("User Registration Success");
-        setLoading(!loading);
-        navigate("/chat");
+        setLoading(false);
+        navigate("/signin");
       })
       .catch((error) => {
-        // Handle error.
         console.log("An error occurred:", error.response);
-        toast.error("This email address had been taken");
+        toast.error("This email address has already been taken");
+        setLoading(false);
       });
-
-    console.log("State Updated to Auth");
   };
 
   const onChangeHandler = (e) => {
-    setSignUp({
+    setSignUpData({
       ...SignUpData,
       [e.target.name]: e.target.value,
     });
   };
 
+  const handleCheckboxChange = (e) => {
+    setAgreeChecked(e.target.checked);
+  };
+
   <div>
     <Loading />
   </div>;
+
   return (
-    <div className="singup">
-      <h1>Sign Up form</h1>
-      <form onSubmit={submitHandler}>
-        <input name="name" value={SignUpData.name} type="text" placeholder="enter your name" onChange={onChangeHandler} />
-        <input name="email" value={SignUpData.email} type="text" placeholder="enter your email" onChange={onChangeHandler} />
-        <input name="password" type="password" value={SignUpData.password} placeholder="enter your password" onChange={onChangeHandler} />
-        <button type="submit">Submit</button>
-        <p>
-          Already have an account? <Link to={"/signin"}>SignIn Here!</Link>
-        </p>
-      </form>
+    <div className="signin signup">
+      <div className="container">
+        <div className="signup-wrapper">
+          <div className="signup-block">
+            <div className="ttl-row">
+              <div className="msg-icon">
+                <img src={TitleIcon} alt="" />
+              </div>
+              <p className="txt">ちょくれん</p>
+            </div>
+            <p className="desc-txt">アカウントを作成する</p>
+            <form onSubmit={submitHandler}>
+              <div className="form-row">
+                <label htmlFor="">氏名</label>
+                <input name="name" value={SignUpData.name} type="text" onChange={onChangeHandler} />
+              </div>
+              <div className="form-row">
+                <label htmlFor="">メールアドレス</label>
+                <input name="email" value={SignUpData.email} type="text" onChange={onChangeHandler} />
+              </div>
+              <div className="form-row">
+                <label htmlFor="">パスワード</label>
+                <input name="password" type="password" value={SignUpData.password} onChange={onChangeHandler} />
+              </div>
+              <p className="term-txt">
+                <span>ご利用規約</span>を必ずご確認ください。
+              </p>
+              <div className="check">
+                <input type="checkbox" className="agree" id="checkagree" name="agree" checked={agreeChecked} onChange={handleCheckboxChange} />
+                <label htmlFor="checkagree">同意しました。</label>
+              </div>
+              {/* <button className="register-btn" type="submit" disabled={!agreeChecked}>
+                {loading ? <Loading /> : "アカウント作成"}
+              </button> */}
+              <button className="register-btn" type="submit" disabled={!agreeChecked}>
+                アカウント作成
+              </button>
+              {loading ? <Loading /> : ""}
+              <p className="register-txt">既にアカウントをお持ちですか？</p>
+              <Link to={"/signin"} className="login-btn">
+                ログインはこちら
+              </Link>
+            </form>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

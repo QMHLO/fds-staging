@@ -1,0 +1,15 @@
+.navbar ul {
+  display: flex;
+  padding: 20px;
+  background-color: blueviolet;
+  color: #fff;
+  font-size: 1.5rem;
+  display: flex;
+  gap: 4rem;
+  list-style: none;
+  justify-content: flex-end;
+}
+
+.navbar ul li {
+  cursor: pointer;
+}

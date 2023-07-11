@@ -1,11 +1,11 @@
 import React from "react";
 // import Chat from "./Chat";
 import { useState } from "react";
-import { AuthContext } from "../Context/AuthContext";
+import { AuthContext } from "../../Context/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { Routes, Route, useParams } from "react-router-dom";
-import ReactChat from "./Chat/ReactChat";
-import Loading from "./Loading";
+import ReactChat from "../Chat/ReactChat";
+import Loading from "../Loading/Loading";
 
 function DetailPage() {
   const [chat, setChat] = useState(false);

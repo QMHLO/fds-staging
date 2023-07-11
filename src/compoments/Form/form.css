@@ -81,3 +81,57 @@
   max-width: 470px;
   margin: 0 0 0 auto;
 }
+
+/* Signup */
+.signup .signup-wrapper {
+  max-width: 1000px;
+  margin: 0 auto;
+  border: 2px solid var(--primary-color);
+}
+.signup .signup-block {
+  max-width: 540px;
+  margin: 60px auto;
+}
+.signin.signup .ttl-row {
+  justify-content: center;
+}
+.signin.signup .desc-txt {
+  text-align: center;
+  font-size: 20px;
+  margin: 30px 0 40px;
+}
+.signin.signup .register-txt {
+  text-align: center;
+}
+.signup .term-txt {
+  text-align: center;
+  margin-top: 40px;
+}
+.signup .term-txt span {
+  color: var(--primary-color);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.signup .check {
+  display: flex;
+  justify-content: center;
+  gap: 0 10px;
+  margin-top: 35px;
+}
+.signup .check input.agree {
+  width: 20px;
+  height: 20px;
+  /* -moz-appearance: none;
+  -webkit-appearance: none;
+  -o-appearance: none; */
+  outline: none;
+  content: none;
+  border: 2px solid var(--softgreen-color);
+}
+.signin.signup .register-btn {
+  margin-top: 35px;
+  margin-bottom: 40px;
+}
+.signin.signup .login-btn {
+  margin-top: 35px;
+}
