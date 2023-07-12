@@ -241,6 +241,7 @@
 }
 .owner .ce-their-message-body {
   margin-left: 40px !important;
+  background: var(--gray-color) !important;
 }
 .owner .ce-avatar {
   width: 60px !important;
@@ -284,6 +285,9 @@
 }
 .owner .ce-chat-form .ce-default-button {
   display: none !important;
+}
+.owner .ce-my-message-body {
+  background: var(--softgreen-color) !important;
 }
 @media screen and (max-width: 768px) {
   .customer .ce-default-button.ce-mobile-chat-list-button,
