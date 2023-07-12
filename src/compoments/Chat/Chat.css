@@ -290,7 +290,7 @@
   background: var(--softgreen-color) !important;
 }
 .owner #msg-textarea {
-  width: calc(100% - 120px) !important;
+  width: calc(100% - 118px) !important;
 }
 @media screen and (max-width: 768px) {
   .customer .ce-default-button.ce-mobile-chat-list-button,
