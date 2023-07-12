@@ -3,6 +3,7 @@ import { AuthContext } from "../../Context/AuthContext";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./header.css";
+import Logo from "../../assets/img/msg_icon.png";
 
 function Header() {
   const { currentUser, adminUser, dispatch } = React.useContext(AuthContext);
@@ -32,44 +33,56 @@ function Header() {
   };
   return (
     <>
-      <div className="navbar">
-        <ul>
-          <li>
-            {" "}
-            <Link to={"/"}>HOME</Link>
-          </li>
-          {(adminUser || admin) && (
-            <li>
-              {" "}
-              <Link to={"/adminchat"}>AdminChat</Link>
-            </li>
-          )}
-          {(currentUser || jwt) && (
-            <li>
-              {" "}
-              <Link to={"/chat"}>Chat</Link>
-            </li>
-          )}
-          {currentUser !== null || adminUser !== null || jwt || admin ? (
-            <>
-              <li>
-                {" "}
-                <Link to={"/"} onClick={logoutHandler}>
-                  Logout
-                </Link>
-              </li>
-            </>
-          ) : (
-            <>
-              <li>
-                <Link to={"/signin"}>SignIn</Link>
-              </li>
-              <li>
-                <Link to={"/signup"}>SignUp</Link>
-              </li>
-            </>
-          )}
-        </ul>
+      <div className="header">
+        <div className="header-container">
+          <div className="header-row">
+            <Link to={"/"} class="ttl-row">
+              <div class="logo-icon">
+                <img src={Logo} alt="" />
+              </div>
+              <p class="txt">ちょくれん</p>
+            </Link>
+            <div className="navbar">
+              <ul>
+                <li>
+                  {" "}
+                  <Link to={"/"}>ホーム</Link>
+                </li>
+                {(adminUser || admin) && (
+                  <li>
+                    {" "}
+                    <Link to={"/adminchat"}>管理者チャット</Link>
+                  </li>
+                )}
+                {(currentUser || jwt) && (
+                  <li>
+                    {" "}
+                    <Link to={"/chat"}>チャット</Link>
+                  </li>
+                )}
+                {currentUser !== null || adminUser !== null || jwt || admin ? (
+                  <>
+                    <li>
+                      {" "}
+                      <Link to={"/"} onClick={logoutHandler}>
+                        ログアウト
+                      </Link>
+                    </li>
+                  </>
+                ) : (
+                  <>
+                    <li>
+                      <Link to={"/signin"}>SignIn</Link>
+                    </li>
+                    <li>
+                      <Link to={"/signup"}>SignUp</Link>
+                    </li>
+                  </>
+                )}
+              </ul>
+            </div>
+          </div>
+        </div>
       </div>
     </>
   );

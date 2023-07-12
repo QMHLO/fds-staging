@@ -322,6 +322,10 @@ img {
   --softgreen-color: #d3e9da;
   --gray-color: #efefef;
   --softgray-color: #f9f9f9;
+  --segray-color: #f5f5f5;
+  --black-color: #000000;
+  --white-color: #ffffff;
+  --magneta-color: #92216f;
 }
 .container {
   max-width: 1120px;

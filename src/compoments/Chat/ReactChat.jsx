@@ -23,8 +23,9 @@ function ReactChat() {
   // const username = user.email;
   // const secret = user.email;
   // const chatProps = useMultiChatLogic(projectId, username, secret);
-  // const currentUserName = localStorage.getItem("name");
-  const username = localStorage.getItem("email")?.split("@")[0];
+  const currentUserName = localStorage.getItem("name");
+  const fullUserName = localStorage.getItem("email")?.split("@")[0];
+  const username = `${fullUserName}sann`;
 
   function getorCreateUser(callback) {
     axios
@@ -36,6 +37,7 @@ function ReactChat() {
 
           secret: currentUser?.email || localStorage.getItem("email"),
           email: currentUser?.email || localStorage.getItem("email"),
+          first_name: currentUserName,
         },
         { headers: { "PRIVATE-KEY": process.env.REACT_APP_PRIVATE_KEY } }
       )
@@ -86,7 +88,7 @@ function ReactChat() {
           <p className="txt">ちょくれん</p>
         </div>
       </div>
-      <ChatComponent user={user} />
+      <ChatComponent user={user} first_name={user.first_name} />
     </div>
   );
 }
