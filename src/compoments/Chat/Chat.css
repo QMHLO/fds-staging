@@ -289,6 +289,9 @@
 .owner .ce-my-message-body {
   background: var(--softgreen-color) !important;
 }
+.owner #msg-textarea {
+  width: calc(100% - 120px) !important;
+}
 @media screen and (max-width: 768px) {
   .customer .ce-default-button.ce-mobile-chat-list-button,
   .customer .ce-default-button.ce-mobile-chat-settings-button {
