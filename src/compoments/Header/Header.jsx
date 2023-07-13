@@ -1,15 +1,16 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import { AuthContext } from "../../Context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./header.css";
 import Logo from "../../assets/img/msg_icon.png";
 
 function Header() {
-  const { currentUser, adminUser, dispatch } = React.useContext(AuthContext);
-  const [jwt, setJwt] = React.useState(localStorage.getItem("jwt-token"));
-  const [admin, setAdmin] = React.useState(localStorage.getItem("admin"));
+  const { currentUser, adminUser, dispatch } = useContext(AuthContext);
+  const [jwt, setJwt] = useState(localStorage.getItem("jwt-token"));
+  const [admin, setAdmin] = useState(localStorage.getItem("admin"));
   const navigate = useNavigate();
+  const [activeNavItem, setActiveNavItem] = useState(null);
 
   const logoutHandler = () => {
     dispatch({
@@ -20,71 +21,72 @@ function Header() {
       type: "SET_ADMINUSER",
       payload: null,
     });
-    // console.log("user logout");
     toast.success("Logout Successful");
-    // localStorage.removeItem("jwt-token");
-    // localStorage.removeItem("admin");
     localStorage.clear();
-    // setTimeout(() => {
-    //   window.location.reload();
-    // }, 800);
-    // window.location.reload();
-    // navigate("/");
   };
+
+  const handleNavItemClick = (item) => {
+    setActiveNavItem(item);
+  };
+
   return (
-    <>
-      <div className="header">
-        <div className="header-container">
-          <div className="header-row">
-            <Link to={"/"} class="ttl-row">
-              <div class="logo-icon">
-                <img src={Logo} alt="" />
-              </div>
-              <p class="txt">ちょくれん</p>
-            </Link>
-            <div className="navbar">
-              <ul>
-                <li>
-                  {" "}
-                  <Link to={"/"}>ホーム</Link>
-                </li>
-                {(adminUser || admin) && (
-                  <li>
-                    {" "}
-                    <Link to={"/adminchat"}>管理者チャット</Link>
-                  </li>
-                )}
-                {(currentUser || jwt) && (
-                  <li>
-                    {" "}
-                    <Link to={"/chat"}>チャット</Link>
-                  </li>
-                )}
-                {currentUser !== null || adminUser !== null || jwt || admin ? (
-                  <>
-                    <li>
-                      {" "}
-                      <Link to={"/"} onClick={logoutHandler}>
-                        ログアウト
-                      </Link>
-                    </li>
-                  </>
-                ) : (
-                  <>
-                    <li>
-                      <Link to={"/signin"}>SignIn</Link>
-                    </li>
-                    <li>
-                      <Link to={"/signup"}>SignUp</Link>
-                    </li>
-                  </>
-                )}
-              </ul>
+    <div className="header">
+      <div className="header-container">
+        <div className="header-row">
+          <Link to={"/"} className="ttl-row">
+            <div className="logo-icon">
+              <img src={Logo} alt="" />
             </div>
+            <p className="txt">ちょくれん</p>
+          </Link>
+          <div className="navbar">
+            <ul>
+              <li>
+                <NavLink exact to={"/"} activeClassName="active" onClick={() => handleNavItemClick("home")}>
+                  ホーム
+                </NavLink>
+              </li>
+              {(adminUser || admin) && (
+                <li>
+                  <NavLink to={"/adminchat"} activeClassName="active" onClick={() => handleNavItemClick("adminchat")}>
+                    管理者チャット
+                  </NavLink>
+                </li>
+              )}
+              {(currentUser || jwt) && (
+                <li>
+                  <NavLink to={"/chat"} activeClassName="active" onClick={() => handleNavItemClick("chat")}>
+                    チャット
+                  </NavLink>
+                </li>
+              )}
+              {currentUser || adminUser || jwt || admin ? (
+                <li>
+                  <Link to={"/"} onClick={logoutHandler}>
+                    ログアウト
+                  </Link>
+                </li>
+              ) : (
+                <>
+                  <li>
+                    {/* <Link to={"/signin"}>SignIn</Link> */}
+                    <NavLink to={"/signin"} activeClassName="active" onClick={() => handleNavItemClick("signin")}>
+                      SignIn
+                    </NavLink>
+                  </li>
+                  <li>
+                    {/* <Link to={"/signup"}>SignUp</Link> */}
+                    <NavLink to={"/signup"} activeClassName="active" onClick={() => handleNavItemClick("signup")}>
+                      SignUp
+                    </NavLink>
+                  </li>
+                </>
+              )}
+            </ul>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

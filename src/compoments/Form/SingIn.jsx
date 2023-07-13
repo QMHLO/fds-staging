@@ -46,7 +46,7 @@ function SignIn() {
         // console.log("User profile", response.data.user);
         // console.log("User token", response.data.jwt);
         // console.log("User Login Successful");
-        toast.success(`Welcome Back ${response.data.user.username}`);
+        toast.success(`Welcome ${response.data.user.username}`);
         setLoading(!loading);
 
         dispatch({
@@ -64,7 +64,7 @@ function SignIn() {
       .catch((error) => {
         // Handle error.
         console.log("An error occurred:", error.response);
-        toast.error("Login Error");
+        toast.error(error.response.data.error.message);
       });
 
     console.log(SignInData);

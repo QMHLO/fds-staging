@@ -135,3 +135,48 @@
 .signin.signup .login-btn {
   margin-top: 35px;
 }
+
+.signup .styled-checkbox {
+  position: absolute;
+  opacity: 0;
+}
+.signup .styled-checkbox + label {
+  position: relative;
+  cursor: pointer;
+  padding: 0;
+  width: max-content;
+}
+.signup .styled-checkbox + label:before {
+  content: "";
+  margin-right: 10px;
+  margin-top: 2px;
+  display: inline-block;
+  vertical-align: text-top;
+  width: 20px;
+  height: 20px;
+  background: var(--softgray-color);
+  border: 2px solid var(--softgreen-color);
+}
+
+.signup .styled-checkbox:checked + label:before {
+  background: var(--primary-color);
+}
+.signup .styled-checkbox:disabled + label {
+  color: #b8b8b8;
+  cursor: auto;
+}
+.signup .styled-checkbox:disabled + label:before {
+  box-shadow: none;
+  background: #ddd;
+}
+.signup .styled-checkbox:checked + label:after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 13px;
+  background: white;
+  width: 2px;
+  height: 2px;
+  box-shadow: 2px 0 0 white, 4px 0 0 white, 4px -2px 0 white, 4px -4px 0 white, 4px -6px 0 white, 4px -8px 0 white;
+  transform: rotate(45deg);
+}

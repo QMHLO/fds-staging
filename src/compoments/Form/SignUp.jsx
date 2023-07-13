@@ -25,6 +25,12 @@ function SignUp() {
 
     const { name, email, password } = SignUpData;
 
+    if (!agreeChecked) {
+      toast.error("Please check the agreement.");
+      setLoading(false);
+      return;
+    }
+
     axios
       .post("https://fds-backend.onrender.com/api/auth/local/register", {
         username: name,
@@ -48,7 +54,7 @@ function SignUp() {
       })
       .catch((error) => {
         console.log("An error occurred:", error.response);
-        toast.error("This email address has already been taken");
+        toast.error(error.response.data.error.message);
         setLoading(false);
       });
   };
@@ -63,10 +69,6 @@ function SignUp() {
   const handleCheckboxChange = (e) => {
     setAgreeChecked(e.target.checked);
   };
-
-  <div>
-    <Loading />
-  </div>;
 
   return (
     <div className="signin signup">
@@ -97,16 +99,15 @@ function SignUp() {
                 <span>ご利用規約</span>を必ずご確認ください。
               </p>
               <div className="check">
-                <input type="checkbox" className="agree" id="checkagree" name="agree" checked={agreeChecked} onChange={handleCheckboxChange} />
-                <label htmlFor="checkagree">同意しました。</label>
+                <input type="checkbox" className="styled-checkbox" id="checkagree" name="agree" checked={agreeChecked} onChange={handleCheckboxChange} />
+                <label htmlFor="checkagree" className="check-agree">
+                  同意しました。
+                </label>
               </div>
-              {/* <button className="register-btn" type="submit" disabled={!agreeChecked}>
-                {loading ? <Loading /> : "アカウント作成"}
-              </button> */}
-              <button className="register-btn" type="submit" disabled={!agreeChecked}>
+              <button className="register-btn" type="submit">
                 アカウント作成
               </button>
-              {loading ? <Loading /> : ""}
+              {loading && <Loading />}
               <p className="register-txt">既にアカウントをお持ちですか？</p>
               <Link to={"/signin"} className="login-btn">
                 ログインはこちら
