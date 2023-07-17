@@ -292,6 +292,9 @@
 .owner #msg-textarea {
   width: calc(100% - 122px) !important;
 }
+.owner .ce-chat-feed-column {
+  border-left: none !important;
+}
 @media screen and (max-width: 768px) {
   .customer .ce-default-button.ce-mobile-chat-list-button,
   .customer .ce-default-button.ce-mobile-chat-settings-button {
