@@ -23,6 +23,14 @@ function Header() {
     });
     toast.success("Logout Successful");
     localStorage.clear();
+    // navigate("/");
+    // setTimeout(() => {
+    //   window.location.reload();
+    // }, 800);
+
+    setJwt(null);
+    setAdmin(null);
+    setActiveNavItem(null);
   };
 
   const handleNavItemClick = (item) => {
@@ -45,6 +53,7 @@ function Header() {
                 <NavLink exact to={"/"} activeClassName="active" onClick={() => handleNavItemClick("home")}>
                   ホーム
                 </NavLink>
+                <NavLink exact to={"/detail"} activeClassName="active" onClick={() => handleNavItemClick("home")}></NavLink>
               </li>
               {(adminUser || admin) && (
                 <li>

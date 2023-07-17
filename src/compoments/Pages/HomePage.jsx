@@ -70,7 +70,7 @@ export default function HomePage() {
                 <Link to={`/detail/${id}`}>
                   <div className="card" key={id}>
                     {/* <img src={`http://localhost:1337${image?.data?.attributes?.url}`} alt="some image" /> */}
-                    <img src={cloudinaryUrl} alt="some image" />
+                    <img src={cloudinaryUrl} alt="some" />
                     <div className="container">
                       <h4>
                         <b>{title}</b>
