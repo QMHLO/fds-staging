@@ -209,6 +209,11 @@
   background: var(--segray-color) !important;
   border: 2px solid var(--segray-color);
   margin-bottom: 15px;
+  margin: 11px 0;
+}
+.owner .ce-chat-form-title {
+  top: 50% !important;
+  transform: translateY(-50%);
 }
 .owner .ce-chat-card {
   position: relative !important;
