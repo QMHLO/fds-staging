@@ -24,7 +24,7 @@ function ReactChat() {
   // const secret = user.email;
   // const chatProps = useMultiChatLogic(projectId, username, secret);
   const currentUserName = localStorage.getItem("name");
-  const fullUserName = localStorage.getItem("email")?.split("@")[0].split(".")[0];
+  const fullUserName = localStorage.getItem("email")?.split("@")[0];
   const username = `${fullUserName}sann`;
 
   function getorCreateUser(callback) {
