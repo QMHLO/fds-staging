@@ -64,7 +64,16 @@ function SignIn() {
       .catch((error) => {
         // Handle error.
         console.log("An error occurred:", error.response);
-        toast.error(error.response.data.error.message);
+        if (error.response.data.error.message === "identifier is a required field") {
+          toast.error("電子メールは必須フィールドです");
+        } else if (error.response.data.error.message === "password is a required field") {
+          toast.error("パスワードは必須フィールドです");
+        } else if (error.response.data.error.message === "Invalid identifier or password") {
+          toast.error("無効な識別子またはパスワード");
+        } else if (error.response.data.error.message === "2 errors occurred") {
+          toast.error("2 errors occurred");
+        }
+        // toast.error(error.response.data.error.message);
       });
 
     console.log(SignInData);

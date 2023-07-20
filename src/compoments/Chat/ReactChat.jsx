@@ -50,6 +50,7 @@ function ReactChat() {
         "https://api.chatengine.io/chats/",
         {
           usernames: ["seller", username || localStorage.getItem("email")],
+          title: "Chatting",
           is_direct_chat: true,
         },
         { headers: { "PRIVATE-KEY": process.env.REACT_APP_PRIVATE_KEY } }

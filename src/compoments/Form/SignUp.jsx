@@ -54,7 +54,24 @@ function SignUp() {
       })
       .catch((error) => {
         console.log("An error occurred:", error.response);
-        toast.error(error.response.data.error.message);
+        if (error.response.data.error.message === "username is a required field") {
+          toast.error("ユーザー名は必須フィールドです");
+        } else if (error.response.data.error.message === "email is a required field") {
+          toast.error("電子メールは必須フィールドです");
+        } else if (error.response.data.error.message === "password is a required field") {
+          toast.error("パスワードは必須フィールドです");
+        } else if (error.response.data.error.message === "Email or Username are already taken") {
+          toast.error("メールアドレスまたはユーザー名はすでに使用されています");
+        } else if (error.response.data.error.message === "username must be at least 3 characters") {
+          toast.error("ユーザー名は少なくとも 3 文字である必要があります");
+        } else if (error.response.data.error.message === "password must be at least 6 characters") {
+          toast.error("パスワードは少なくとも6文字でなければなりません");
+        } else if (error.response.data.error.message === "2 errors occurred") {
+          toast.error("2 errors occurred");
+        } else if (error.response.data.error.message === "3 errors occurred") {
+          toast.error("3 errors occurred");
+        }
+        // toast.error(error.response.data.error.message);
         setLoading(false);
       });
   };
