@@ -63,7 +63,7 @@ function DetailPage() {
         <h2>Detail Page</h2>
         <h3>{data.data.attributes.title}</h3>
         {/* <img src={`http://localhost:1337${data?.data?.attributes?.image?.data?.attributes?.url}`} alt="some image" /> */}
-        <img src={cloudinaryUrl} alt="some image" />
+        <img src={cloudinaryUrl} alt="some" />
         <p>{data.data.attributes.description}</p>
         {!adminUser && !admin ? <button onClick={chatHandler}>Chat with Owner</button> : ""}
         {chat && <ReactChat />}
