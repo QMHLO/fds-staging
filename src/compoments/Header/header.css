@@ -37,6 +37,7 @@
   gap: 0 35px;
   list-style: none;
   justify-content: flex-end;
+  align-items: center;
 }
 
 .header .navbar ul li a {
@@ -54,4 +55,15 @@
   left: 50%;
   transform: translateX(-50%);
   bottom: -10px;
+}
+.header .user-logo {
+  width: 40px;
+  height: 40px;
+  margin: 0 auto 5px auto;
+}
+.header .user-name {
+  display: block;
+  text-align: center;
+  font-size: 10px;
+  color: var(--white-color);
 }

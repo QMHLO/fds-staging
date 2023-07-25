@@ -4,6 +4,7 @@ import { Link, NavLink, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import "./header.css";
 import Logo from "../../assets/img/msg_icon.png";
+import UserLogo from "../../assets/img/user_chat_avator.png";
 
 function Header() {
   const { currentUser, adminUser, dispatch } = useContext(AuthContext);
@@ -11,6 +12,8 @@ function Header() {
   const [admin, setAdmin] = useState(localStorage.getItem("admin"));
   const navigate = useNavigate();
   const [activeNavItem, setActiveNavItem] = useState(null);
+  const userName = localStorage.getItem("name");
+  console.log(userName);
 
   const logoutHandler = () => {
     dispatch({
@@ -70,11 +73,17 @@ function Header() {
                 </li>
               )}
               {currentUser || adminUser || jwt || admin ? (
-                <li>
-                  <Link to={"/"} onClick={logoutHandler}>
-                    ログアウト
-                  </Link>
-                </li>
+                <>
+                  <li>
+                    <Link to={"/"} onClick={logoutHandler}>
+                      ログアウト
+                    </Link>
+                  </li>
+                  <li>
+                    <img src={UserLogo} className="user-logo" alt="userlogo" />
+                    <span className="user-name">{userName ? userName : "Admin"}</span>
+                  </li>
+                </>
               ) : (
                 <>
                   <li>

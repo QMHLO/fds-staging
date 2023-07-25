@@ -33,11 +33,8 @@ function ReactChat() {
         "https://api.chatengine.io/users/",
         {
           username: username || localStorage.getItem("email"),
-          // username: currentUserName,
-
           secret: currentUser?.email || localStorage.getItem("email"),
           email: currentUser?.email || localStorage.getItem("email"),
-          first_name: currentUserName,
         },
         { headers: { "PRIVATE-KEY": process.env.REACT_APP_PRIVATE_KEY } }
       )
@@ -91,7 +88,7 @@ function ReactChat() {
           <p className="txt">ちょくれん</p>
         </div>
       </div>
-      <ChatComponent user={user} first_name={user.first_name} />
+      <ChatComponent user={user} />
     </div>
   );
 }
