@@ -59,6 +59,7 @@ function SignIn() {
         localStorage.setItem("jwt-token", response.data.jwt);
         localStorage.setItem("email", email);
         localStorage.setItem("name", response.data.user.username);
+        localStorage.setItem("user-register", "user-registered");
         navigate("/chat");
       })
       .catch((error) => {

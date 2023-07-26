@@ -5,6 +5,7 @@ import { toast } from "react-toastify";
 import "./header.css";
 import Logo from "../../assets/img/msg_icon.png";
 import UserLogo from "../../assets/img/user_chat_avator.png";
+import AdminLogo from "../../assets/img/seller_avator.png";
 
 function Header() {
   const { currentUser, adminUser, dispatch } = useContext(AuthContext);
@@ -13,7 +14,7 @@ function Header() {
   const navigate = useNavigate();
   const [activeNavItem, setActiveNavItem] = useState(null);
   const userName = localStorage.getItem("name");
-  console.log(userName);
+  const registerUser = localStorage.getItem("user-register");
 
   const logoutHandler = () => {
     dispatch({
@@ -65,14 +66,14 @@ function Header() {
                   </NavLink>
                 </li>
               )}
-              {(currentUser || jwt) && (
+              {registerUser && (
                 <li>
                   <NavLink to={"/chat"} activeClassName="active" onClick={() => handleNavItemClick("chat")}>
                     チャット
                   </NavLink>
                 </li>
               )}
-              {currentUser || adminUser || jwt || admin ? (
+              {registerUser || adminUser || admin ? (
                 <>
                   <li>
                     <Link to={"/"} onClick={logoutHandler}>
@@ -80,7 +81,7 @@ function Header() {
                     </Link>
                   </li>
                   <li>
-                    <img src={UserLogo} className="user-logo" alt="userlogo" />
+                    <img src={userName ? UserLogo : AdminLogo} className="user-logo" alt="userlogo" />
                     <span className="user-name">{userName ? userName : "Admin"}</span>
                   </li>
                 </>

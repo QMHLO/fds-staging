@@ -55,6 +55,9 @@
 .owner .ce-chat-feed-column {
   /* border-bottom: 1px solid #000 !important; */
 }
+.customer .ce-message-list-content div:first-child .ce-avatar {
+  bottom: -9px !important;
+}
 .ce-avatar-dot {
   display: none !important;
 }
