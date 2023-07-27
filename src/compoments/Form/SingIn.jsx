@@ -31,7 +31,7 @@ function SignIn() {
         payload: SignInData,
       });
       localStorage.setItem("admin", "1");
-      toast.success("Welcome Admin");
+      toast.success("ちょくれんへようこそ！");
       navigate("/adminchat");
       return;
     }
@@ -89,8 +89,6 @@ function SignIn() {
   <div>
     <Loading />
   </div>;
-
-  // console.log(import.meta.env.VITE_OWNER_MAIL);
 
   return (
     <div className="signin">

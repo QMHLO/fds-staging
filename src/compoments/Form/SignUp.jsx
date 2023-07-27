@@ -48,7 +48,7 @@ function SignUp() {
         });
         localStorage.setItem("jwt-token", response.data.jwt);
         localStorage.setItem("name", response.data.user.username);
-        toast.success("User Registration Success");
+        toast.success("アカウントの作成が完了しました");
         setLoading(false);
         navigate("/signin");
       })
