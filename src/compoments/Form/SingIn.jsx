@@ -66,13 +66,13 @@ function SignIn() {
         // Handle error.
         console.log("An error occurred:", error.response);
         if (error.response.data.error.message === "identifier is a required field") {
-          toast.error("電子メールは必須フィールドです");
+          toast.error("氏名は必須です");
         } else if (error.response.data.error.message === "password is a required field") {
-          toast.error("パスワードは必須フィールドです");
+          toast.error("メールアドレスは必須です");
         } else if (error.response.data.error.message === "Invalid identifier or password") {
-          toast.error("無効な識別子またはパスワード");
+          toast.error("メールアドレスかパスワードに誤りがあります");
         } else if (error.response.data.error.message === "2 errors occurred") {
-          toast.error("2 errors occurred");
+          toast.error("未入力の項目があります");
         }
         // toast.error(error.response.data.error.message);
       });

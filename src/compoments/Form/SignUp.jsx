@@ -26,7 +26,7 @@ function SignUp() {
     const { name, email, password } = SignUpData;
 
     if (!agreeChecked) {
-      toast.error("Please check the agreement.");
+      toast.error("ご利用規約同意のチェックが未選択です");
       setLoading(false);
       return;
     }
@@ -55,20 +55,20 @@ function SignUp() {
       .catch((error) => {
         console.log("An error occurred:", error.response);
         if (error.response.data.error.message === "username is a required field") {
-          toast.error("ユーザー名は必須フィールドです");
+          toast.error("氏名は必須です");
         } else if (error.response.data.error.message === "email is a required field") {
-          toast.error("電子メールは必須フィールドです");
+          toast.error("メールアドレスは必須です");
         } else if (error.response.data.error.message === "password is a required field") {
-          toast.error("パスワードは必須フィールドです");
+          toast.error("パスワードは必須です");
         } else if (error.response.data.error.message === "Email or Username are already taken") {
           toast.error("メールアドレスまたはユーザー名はすでに使用されています");
         } else if (error.response.data.error.message === "username must be at least 3 characters") {
-          toast.error("ユーザー名は少なくとも 3 文字である必要があります");
+          toast.error("ユーザー名は3文字以上でご入力ください");
         } else if (error.response.data.error.message === "password must be at least 6 characters") {
-          toast.error("パスワードは少なくとも6文字でなければなりません");
-        } else if (error.response.data.error.message === "2 errors occurred") {
+          toast.error("パスワードは6文字以上でご入力ください");
+        } else if (error.response.data.error.message === "未入力の項目があります") {
           toast.error("2 errors occurred");
-        } else if (error.response.data.error.message === "3 errors occurred") {
+        } else if (error.response.data.error.message === " 未入力の項目があります") {
           toast.error("3 errors occurred");
         }
         // toast.error(error.response.data.error.message);
