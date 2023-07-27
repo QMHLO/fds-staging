@@ -66,10 +66,10 @@ function SignUp() {
           toast.error("ユーザー名は3文字以上でご入力ください");
         } else if (error.response.data.error.message === "password must be at least 6 characters") {
           toast.error("パスワードは6文字以上でご入力ください");
-        } else if (error.response.data.error.message === "未入力の項目があります") {
-          toast.error("2 errors occurred");
-        } else if (error.response.data.error.message === " 未入力の項目があります") {
-          toast.error("3 errors occurred");
+        } else if (error.response.data.error.message === "2 errors occurred") {
+          toast.error("未入力の項目があります");
+        } else if (error.response.data.error.message === "3 errors occurred") {
+          toast.error("未入力の項目があります");
         }
         // toast.error(error.response.data.error.message);
         setLoading(false);
