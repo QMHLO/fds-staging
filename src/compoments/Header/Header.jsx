@@ -25,7 +25,7 @@ function Header() {
       type: "SET_ADMINUSER",
       payload: null,
     });
-    toast.success("Logout Successful");
+    toast.success("ログアウトしました");
     localStorage.clear();
     // navigate("/");
     // setTimeout(() => {
