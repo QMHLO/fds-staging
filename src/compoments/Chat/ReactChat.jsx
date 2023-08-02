@@ -47,7 +47,7 @@ function ReactChat() {
         "https://api.chatengine.io/chats/",
         {
           // usernames: ["seller", username || localStorage.getItem("email")],
-          usernames: [username || localStorage.getItem("email")],
+          usernames: [process.env.REACT_APP_OWNER_CHAT_USER_NAME, username || localStorage.getItem("email")],
 
           title: "Chatting",
           is_direct_chat: true,

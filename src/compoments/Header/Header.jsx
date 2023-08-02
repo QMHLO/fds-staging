@@ -67,11 +67,18 @@ function Header() {
                 </li>
               )}
               {registerUser && (
-                <li>
-                  <NavLink to={"/chat"} activeClassName="active" onClick={() => handleNavItemClick("chat")}>
-                    チャット
-                  </NavLink>
-                </li>
+                <>
+                  <li>
+                    <NavLink to={"/chat"} activeClassName="active" onClick={() => handleNavItemClick("chat")}>
+                      チャット
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink to={"/contact"} activeClassName="active" onClick={() => handleNavItemClick("contact")}>
+                      Contact
+                    </NavLink>
+                  </li>
+                </>
               )}
               {registerUser || adminUser || admin ? (
                 <>

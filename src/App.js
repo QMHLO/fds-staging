@@ -11,6 +11,7 @@ import OwnerChat from "./compoments/Chat/OwnerChat";
 import "./App.css";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import Contact from "./compoments/Contact/Contact";
 
 function App() {
   const { currentUser, adminUser } = React.useContext(AuthContext);
@@ -37,6 +38,7 @@ function App() {
       {(currentUser || jwt) && (!adminUser || !admin) && (
         <Routes>
           <Route path="/chat" element={<ReactChat />} />
+          <Route path="/contact" element={<Contact />} />
           {/* <Route path="/adminchat" element={<OwnerChat />} /> */}
           <Route path="/adminchat" element={<Navigate replace to="/chat" />} />
         </Routes>

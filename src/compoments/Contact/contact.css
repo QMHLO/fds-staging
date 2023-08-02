@@ -1,0 +1,18 @@
+.contact-form {
+  margin: 50px 0;
+}
+.contact-form form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+.contact-form .form-row {
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0 20px;
+}
+.contact-form .send-btn {
+  display: block;
+  margin: 0 auto;
+}
