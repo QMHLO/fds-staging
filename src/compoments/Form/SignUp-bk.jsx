@@ -6,6 +6,7 @@ import { toast } from "react-toastify";
 import { Link } from "react-router-dom";
 import Loading from "../Loading/Loading";
 import TitleIcon from "../../assets/img/msg_icon_black.png";
+import "./form.css";
 
 function SignUp() {
   const [SignUpData, setSignUpData] = useState({
@@ -48,23 +49,6 @@ function SignUp() {
         });
         localStorage.setItem("jwt-token", response.data.jwt);
         localStorage.setItem("name", response.data.user.username);
-        // Send email confirmation request after successful registration
-        axios
-          .post("https://fds-backend.onrender.com/api/auth/send-email-confirmation", {
-            email: response.data.user.email,
-          })
-          .then(() => {
-            // Confirmation email sent successfully
-            toast.success("アカウントの作成が完了しました");
-            setLoading(false);
-            navigate("/signin");
-          })
-          .catch((error) => {
-            // Error sending confirmation email
-            console.log("Error sending confirmation email:", error);
-            setLoading(false);
-            navigate("/signin");
-          });
         toast.success("アカウントの作成が完了しました");
         setLoading(false);
         navigate("/signin");
